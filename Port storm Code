@@ -1,0 +1,41 @@
+### 3. **PortStorm** - Fast TCP Port Scanner (Python)
+```python
+# PortStorm: Simple multi-threaded TCP port scanner
+import socket
+import threading
+
+open_ports = []
+
+def scan_port(ip, port):
+    try:
+        s = socket.socket()
+        s.settimeout(0.5)
+        s.connect((ip, port))
+        open_ports.append(port)
+        print(f"[+] Port {port} is open")
+    except:
+        pass
+
+if __name__ == "__main__":
+    target = input("Enter IP to scan: ")
+    for port in range(1, 1025):
+        thread = threading.Thread(target=scan_port, args=(target, port))
+        thread.start()
+```
+**README.md**
+```
+# PortStorm
+A lightweight TCP port scanner using multi-threading to detect open ports quickly.
+
+## Features
+- Scans ports 1Ð1024 on a target IP
+- Uses threads for faster scanning
+- Displays open ports in real-time
+
+## Usage
+Run the script and enter the target IP:
+```bash
+python3 port_storm.py
+```
+```
+---

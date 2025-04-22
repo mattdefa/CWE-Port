@@ -1,0 +1,50 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2338\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ### 2. **ReconRaptor** - OSINT Recon Script (Python)\
+```python\
+# ReconRaptor: Simple domain WHOIS and DNS record tool\
+import whois\
+import socket\
+\
+def lookup_domain_info(domain):\
+    print("[+] Performing WHOIS lookup...")\
+    w = whois.whois(domain)\
+    print(w)\
+\
+    print("\\n[+] Resolving DNS...")\
+    try:\
+        ip = socket.gethostbyname(domain)\
+        print(f"Resolved IP: \{ip\}")\
+    except socket.gaierror:\
+        print("Error resolving domain.")\
+\
+if __name__ == '__main__':\
+    domain = input("Enter domain to lookup: ")\
+    lookup_domain_info(domain)\
+```\
+**README.md**\
+```\
+# ReconRaptor\
+Performs simple OSINT reconnaissance on domains using WHOIS and DNS lookups.\
+\
+## Features\
+- WHOIS record extraction\
+- DNS IP resolution\
+- Basic error handling\
+\
+## Usage\
+Install the required module:\
+```bash\
+pip install python-whois\
+```\
+Run the script:\
+```bash\
+python3 recon_raptor.py\
+```\
+```\
+---}
